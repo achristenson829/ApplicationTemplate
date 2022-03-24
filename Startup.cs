@@ -1,13 +1,10 @@
 ﻿using System;
-using ApplicationTemplate.Services;
+using MediaService.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace ApplicationTemplate;
 
-/// <summary>
-///     Used for registration of new interfaces
-/// </summary>
 internal class Startup
 {
     public IServiceProvider ConfigureServices()
@@ -22,7 +19,8 @@ internal class Startup
 
         // Add new lines of code here to register any interfaces and concrete services you create
         services.AddTransient<IMainService, MainService>();
-        services.AddTransient<IFileService, FileService>();
+        services.AddTransient<IMovieService, MovieService>();
+        services.AddTransient<IDataService, DataService>();
 
         return services.BuildServiceProvider();
     }

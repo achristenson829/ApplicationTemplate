@@ -1,41 +1,37 @@
 ﻿using System;
 
-namespace ApplicationTemplate.Services;
-
-/// <summary>
-///     You would need to inject your interfaces here to execute the methods in Invoke()
-///     See the commented out code as an example
-/// </summary>
-public class MainService : IMainService
+namespace MediaService.Services
 {
-    private readonly IFileService _fileService;
-    public MainService(IFileService fileService)
-    {
-        _fileService = fileService;
-    }
 
-    public void Invoke()
+
+    public class MainService : IMainService
     {
-        string choice;
-        do
+        private readonly IDataService _dataService;
+
+        public MainService(IDataService dataService)
         {
-            Console.WriteLine("1) Add Movie");
-            Console.WriteLine("2) Display All Movies");
-            Console.WriteLine("X) Quit");
-            choice = Console.ReadLine();
-
-            // Logic would need to exist to validate inputs and data prior to writing to the file
-            // You would need to decide where this logic would reside.
-            // Is it part of the FileService or some other service?
-            if (choice == "1")
-            {
-                _fileService.Write();
-            }
-            else if (choice == "2")
-            {
-                _fileService.Read();
-            }
+            _dataService = dataService;
         }
-        while (choice != "X");
+
+        public void Invoke()
+        {
+            string choice;
+            do
+            {
+                Console.WriteLine("1) Add Movie");
+                Console.WriteLine("2) Display All Movies");
+                Console.WriteLine("X) Quit");
+                choice = Console.ReadLine();
+
+                if (choice == "1")
+                {
+                    _dataService.Write();
+                }
+                else if (choice == "2")
+                {
+                    _dataService.Read();
+                }
+            } while (choice != "X");
+        }
     }
 }

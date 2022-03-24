@@ -1,5 +1,5 @@
 ﻿using System;
-using ApplicationTemplate.Services;
+using MediaService.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ApplicationTemplate;
@@ -17,6 +17,7 @@ public class Program
             var startup = new Startup();
             var serviceProvider = startup.ConfigureServices();
             var service = serviceProvider.GetService<IMainService>();
+
 
             service?.Invoke();
         }

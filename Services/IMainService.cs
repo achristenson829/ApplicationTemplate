@@ -1,4 +1,4 @@
-﻿namespace ApplicationTemplate.Services;
+﻿namespace MediaService.Services;
 
 public interface IMainService
 {
